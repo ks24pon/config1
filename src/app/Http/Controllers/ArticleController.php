@@ -12,4 +12,10 @@ class ArticleController extends Controller
     $articles = Article::all()->sortByDesc('created_at');
     return view('articles.index', ['articles' => $articles]);
   }
+
+  // 記事投稿画面
+  public function create()
+  {
+    return view('articles.create');
+  }
 }
