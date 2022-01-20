@@ -30,4 +30,12 @@ class ArticleController extends Controller
     $article->save();
     return redirect()->route('articles.index');
   }
+
+  // 記事編集画面
+  // Article $articleと型宣言することでArticleモデルのインスタンスのDIが行われる
+  public function edit(Article $article)
+  {
+    // viewメゾットによりarticlesにあるeditという名前のビューを表示する
+    return view('articles.edit', ['article' => $article]);
+  }
 }
