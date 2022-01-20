@@ -23,9 +23,8 @@ class ArticleController extends Controller
   // 記事投稿処理
   public function store(ArticleRequest $request, Article $article)
   {
-    // Articleモデルのインスタンスであるtitleとbodyを代入
-    $article->title = $request->title;
-    $article->body = $request->body;
+    // allメソッドで記事投稿から送信されたPOSTリクエストのパラメーターを取得
+    $article->fill($request->all());
     $article->user_id = $request->user()->id;
     $article->save();
     return redirect()->route('articles.index');
