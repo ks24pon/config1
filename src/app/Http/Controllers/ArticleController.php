@@ -38,4 +38,11 @@ class ArticleController extends Controller
     // viewメゾットによりarticlesにあるeditという名前のビューを表示する
     return view('articles.edit', ['article' => $article]);
   }
+
+  // 記事編集処理
+  public function update(ArticleRequest $request, Article $article)
+  {
+    $article->fill($request->all())->save();
+    return redirect()->route('articles.index');
+  }
 }
