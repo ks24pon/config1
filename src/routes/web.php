@@ -11,5 +11,7 @@
 |
 */
 
+Route::get('/', 'ArticleController@index')->name('articles.index');
 Auth::routes();
-Route::get('/', 'ArticleController@index');
+// 記事関連のルーティング
+Route::resource('/articles', 'ArticleController')->except(['index'])->middleware('auth');
