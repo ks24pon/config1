@@ -28,5 +28,6 @@ class ArticleController extends Controller
     $article->body = $request->body;
     $article->user_id = $request->user()->id;
     $article->save();
+    return redirect()->route('articles.index');
   }
 }
