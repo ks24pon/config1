@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Article extends Model
 {
@@ -16,5 +17,18 @@ class Article extends Model
   public function user(): BelongsTo
   {
     return $this->belongsTo('App\User');
+  }
+  // いいねにおける記事モデルとユーザーモデルの関係は多対多
+  public function likes(): BelongsToMany
+  {
+    return $this->belongsToMany('App\User', 'likes')->withTimestamps();
+  }
+  // nullableな型宣言を行いnullも渡せるように実装
+  public function isLikedBy(?User $user): bool
+  {
+    // 三項演算子を利用
+    return $user
+      ? (bool)$this->likes->where('id', $user->id)->count()
+      : false;
   }
 }
