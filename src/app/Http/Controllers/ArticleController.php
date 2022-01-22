@@ -62,4 +62,30 @@ class ArticleController extends Controller
   {
     return view('articles.show', ['article' => $article]);
   }
+
+  // いいね機能likeメソッド
+  public function like(Request $request, Article $article)
+  {
+    // 削除
+    $article->likes()->detach($request->user()->id);
+    // 新規登録
+    $article->likes()->attach($request->user()->id);
+
+    return [
+      'id' => $article->id,
+      'countLikes' => $article->count_likes,
+    ];
+  }
+
+  // いいね機能unlikeメソッド
+  public function unlike(Request $request, Article $article)
+  {
+    // 削除
+    $article->likes()->detach($request->user()->id);
+
+    return [
+      'id' => $article->id,
+      'countLikes' => $article->count_likes,
+    ];
+  }
 }
