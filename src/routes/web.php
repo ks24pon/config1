@@ -18,7 +18,7 @@ Route::resource('/articles', 'ArticleController')->except(['index', 'show'])->mi
 //記事詳細のルーティング
 Route::resource('/articles', 'ArticleController')->only(['show']);
 // いいね機能のルーティング
-Route::prefix('article')->name('articles.')->group(function () {
+Route::prefix('articles')->name('articles.')->group(function () {
   // いいねしたルーティング
   Route::put('/{article}/like', 'ArticleController@like')->name('like')->middleware('auth');
   // いいね外したルーティング
