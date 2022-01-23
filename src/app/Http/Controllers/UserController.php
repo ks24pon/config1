@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-  // ユーザーページ表示のメソッド
   public function show(string $name)
   {
     $user = User::where('name', $name)->first();
