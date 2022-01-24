@@ -19,7 +19,7 @@ export default {
     VueTagsInput,
   },
   props: {
-    iniitialTags: {
+    initialTags: {
       type: Array,
       default: [],
     },
