@@ -23,7 +23,7 @@ export default {
       type: Array,
       default: [],
     },
-    autocompleteltems: {
+    autocompleteItems: {
       type: Array,
       default: [],
     },
