@@ -18,10 +18,16 @@ export default {
   components: {
     VueTagsInput,
   },
+  props: {
+    iniitialTags: {
+      type: Array,
+      default: [],
+    },
+  },
   data() {
     return {
       tag: "",
-      tags: [],
+      tags: this.initialTags,
       autocompleteItems: [
         {
           text: "Spain",
