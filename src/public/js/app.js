@@ -2071,7 +2071,7 @@ __webpack_require__.r(__webpack_exports__);
     VueTagsInput: _johmun_vue_tags_input__WEBPACK_IMPORTED_MODULE_0___default.a
   },
   props: {
-    iniitialTags: {
+    initialTags: {
       type: Array,
       "default": []
     }
