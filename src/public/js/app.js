@@ -2063,6 +2063,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -2092,6 +2094,9 @@ __webpack_require__.r(__webpack_exports__);
       return this.autocompleteItems.filter(function (i) {
         return i.text.toLowerCase().indexOf(_this.tag.toLowerCase()) !== -1;
       });
+    },
+    tagsJson: function tagsJson() {
+      return JSON.stringify(this.tags);
     }
   }
 });
@@ -21293,8 +21298,17 @@ var render = function () {
   return _c(
     "div",
     [
+      _c("input", {
+        attrs: { type: "hidden", name: "tags" },
+        domProps: { value: _vm.tagsJson },
+      }),
+      _vm._v(" "),
       _c("vue-tags-input", {
-        attrs: { tags: _vm.tags, "autocomplete-items": _vm.filteredItems },
+        attrs: {
+          tags: _vm.tags,
+          placeholder: "タグを5個まで入力できます",
+          "autocomplete-items": _vm.filteredItems,
+        },
         on: {
           "tags-changed": function (newTags) {
             return (_vm.tags = newTags)
