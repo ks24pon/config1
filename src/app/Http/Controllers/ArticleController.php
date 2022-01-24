@@ -39,7 +39,7 @@ class ArticleController extends Controller
       // 絡む名と値のペアを待つレコードがテーブルに存在するか探し、存在すればそのモデルを返す
       $tag = Tag::firstOrCreate(['name' => $tagName]);
       // $tagにはタグモデルが代入され記事とタグの紐付けを行う
-      $article->tag()->attach($tag);
+      $article->tags()->attach($tag);
     });
     return redirect()->route('articles.index');
   }
@@ -63,14 +63,11 @@ class ArticleController extends Controller
   public function update(ArticleRequest $request, Article $article)
   {
     $article->fill($request->all())->save();
-    // 一旦削除して再度登録
+
     $article->tags()->detach();
-    // タグの登録と記事・タグの紐付けを行う
     $request->tags->each(function ($tagName) use ($article) {
-      // 絡む名と値のペアを待つレコードがテーブルに存在するか探し、存在すればそのモデルを返す
       $tag = Tag::firstOrCreate(['name' => $tagName]);
-      // $tagにはタグモデルが代入され記事とタグの紐付けを行う
-      $article->tag()->attach($tag);
+      $article->tags()->attach($tag);
     });
     return redirect()->route('articles.index');
   }
