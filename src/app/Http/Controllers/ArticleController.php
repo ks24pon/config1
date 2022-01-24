@@ -48,8 +48,15 @@ class ArticleController extends Controller
   // Article $articleと型宣言することでArticleモデルのインスタンスのDIが行われる
   public function edit(Article $article)
   {
-    // viewメゾットによりarticlesにあるeditという名前のビューを表示する
-    return view('articles.edit', ['article' => $article]);
+    // mapメソッドで連想配列
+    $tagNames = $article->tags->map(function ($tag) {
+      return ['text' => $tag->name];
+    });
+    // 変数で渡す
+    return view('articles.edit', [
+      'article' => $article,
+      'tagNames' => $tagNames,
+    ]);
   }
 
   // 記事編集処理
