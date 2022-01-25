@@ -2063,26 +2063,28 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     VueTagsInput: _johmun_vue_tags_input__WEBPACK_IMPORTED_MODULE_0___default.a
   },
+  props: {
+    initialTags: {
+      type: Array,
+      "default": []
+    },
+    autocompleteItems: {
+      type: Array,
+      "default": []
+    }
+  },
   data: function data() {
     return {
       tag: "",
-      tags: [],
-      autocompleteItems: [{
-        text: "Spain"
-      }, {
-        text: "France"
-      }, {
-        text: "USA"
-      }, {
-        text: "Germany"
-      }, {
-        text: "China"
-      }]
+      tags: this.initialTags
     };
   },
   computed: {
@@ -2092,6 +2094,9 @@ __webpack_require__.r(__webpack_exports__);
       return this.autocompleteItems.filter(function (i) {
         return i.text.toLowerCase().indexOf(_this.tag.toLowerCase()) !== -1;
       });
+    },
+    tagsJson: function tagsJson() {
+      return JSON.stringify(this.tags);
     }
   }
 });
@@ -2174,7 +2179,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.vue-tags-input .ti-tag {\n  background: transparent;\n  border: 1px solid #747373;\n  color: #747373;\n  margin-right: 4px;\n  border-radius: 0px;\n  font-size: 13px;\n}\n", ""]);
+exports.push([module.i, "\n.vue-tags-input .ti-tag {\n  background: transparent;\n  border: 1px solid #747373;\n  color: #747373;\n  margin-right: 4px;\n  border-radius: 0px;\n  font-size: 13px;\n}\n.vue-tags-input .ti-tag::before {\n  content: \"#\";\n}\n", ""]);
 
 // exports
 
@@ -21338,8 +21343,18 @@ var render = function () {
   return _c(
     "div",
     [
+      _c("input", {
+        attrs: { type: "hidden", name: "tags" },
+        domProps: { value: _vm.tagsJson },
+      }),
+      _vm._v(" "),
       _c("vue-tags-input", {
-        attrs: { tags: _vm.tags, "autocomplete-items": _vm.filteredItems },
+        attrs: {
+          tags: _vm.tags,
+          placeholder: "タグを5個まで入力できます",
+          "autocomplete-items": _vm.filteredItems,
+          "add-on-key": [13, 32],
+        },
         on: {
           "tags-changed": function (newTags) {
             return (_vm.tags = newTags)

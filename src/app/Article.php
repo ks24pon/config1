@@ -37,4 +37,10 @@ class Article extends Model
     // countメソッドを使ってコレクションの要素数を数える
     return $this->likes->count();
   }
+
+  // 記事モデルとタグモデルの関係は多対多の関係
+  public function tags(): BelongsToMany
+  {
+    return $this->belongsToMany('App\Tag')->withTimestamps();
+  }
 }
