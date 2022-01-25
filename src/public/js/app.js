@@ -2065,6 +2065,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -21307,6 +21308,7 @@ var render = function () {
           tags: _vm.tags,
           placeholder: "タグを5個まで入力できます",
           "autocomplete-items": _vm.filteredItems,
+          "add-on-key": [13, 32],
         },
         on: {
           "tags-changed": function (newTags) {
