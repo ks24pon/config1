@@ -18,6 +18,6 @@ class Tag extends Model
   // タグモデルに記事モデルへのリレーションを追加
   public function articles(): BelongsToMany
   {
-    return $this->belongsToMany('App\Article')->withTimestamos();
+    return $this->belongsToMany('App\Article')->withTimestamps();
   }
 }
