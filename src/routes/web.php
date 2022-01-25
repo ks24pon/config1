@@ -24,3 +24,9 @@ Route::prefix('articles')->name('articles.')->group(function () {
   // いいね外したルーティング
   Route::delete('/{article}/like', 'ArticleController@unlike')->name('unlike')->middleware('auth');
 });
+// ユーザーページ
+Route::prefix('users')->name('users.')->group(function () {
+  Route::get('/{name}', 'UserController@show')->name('show');
+});
+// タグ別記事一覧画面のルーティング
+Route::get('/tags/{name}', 'TagController@show')->name('tags.show');
