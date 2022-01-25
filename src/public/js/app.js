@@ -2075,7 +2075,7 @@ __webpack_require__.r(__webpack_exports__);
       type: Array,
       "default": []
     },
-    autocompleteltems: {
+    autocompleteItems: {
       type: Array,
       "default": []
     }
