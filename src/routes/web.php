@@ -28,3 +28,5 @@ Route::prefix('articles')->name('articles.')->group(function () {
 Route::prefix('users')->name('users.')->group(function () {
   Route::get('/{name}', 'UserController@show')->name('show');
 });
+// タグ別記事一覧画面のルーティング
+Route::get('/tag/{name}', 'TagController@show')->name('tag.show');
