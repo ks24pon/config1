@@ -20,6 +20,7 @@ class UserController extends Controller
   // フォロー機能
   public function follow(Request $request, string $name)
   {
+    // whereメソッドでユーザーモデルをコレクションとして渡してfirstメソッドで最初の１けんのユーザーを取得
     $user = User::where('name', $name)->first();
 
     // 自分自身をフォローできないようにする
@@ -32,10 +33,21 @@ class UserController extends Controller
       // レスポンスをユーザー名で返す
       return ['name' => $name];
     }
-  }
 
   // フォロー解除機能
   public function unfollow(Request $request, string $name)
-  {
-  }
+    {
+      // whereメソッドでUserモデルをコレクションに渡しfirstメソッドで最初の１件のユーザーを取得
+      $user = User::where('name', $name)->first();
+      // 自分自身をフォローできないようにする
+      if($user->id === $request->user()->id)
+      {
+        // abort関数で第一引数にステータスコードを渡す
+        return abort('404', 'Cannot follow yourself.');
+      }
+      // 削除のみ
+      $request->user()->followings()->detach($user);
+      // レスポンスのユーザー名で返す
+      return['name' => $name];
+    }
 }
