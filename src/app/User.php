@@ -42,4 +42,12 @@ class User extends Authenticatable
   {
     return $this->belongsToMany('App\User', 'follows', 'followee_id', 'follower_id')->withTimestamps();
   }
+  // nullを許容
+  public function isFollowedBy(?User $user): bool
+  {
+    // 三項演算子の利用
+    return $user
+      ? (bool)$this->followers->where('id', $user->id)->count()
+      : false;
+  }
 }
