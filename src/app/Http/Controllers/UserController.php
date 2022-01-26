@@ -17,4 +17,25 @@ class UserController extends Controller
       'user' => $user,
     ]);
   }
+  // フォロー機能
+  public function follow(Request $request, string $name)
+  {
+    $user = User::where('name', $name)->first();
+
+    // 自分自身をフォローできないようにする
+    if ($user->id === $request->user()->id) {
+      // abort関数で第一引数にステータスコードを渡す
+      return abort('404', 'Cannot follow yourself');
+      // 一人のユーザーが複数重ねてフォローできないようにdetachから実装
+      $request->user()->followings()->detach($user);
+      $request->user()->followings()->attach($user);
+      // レスポンスをユーザー名で返す
+      return ['name' => $name];
+    }
+  }
+
+  // フォロー解除機能
+  public function unfollow(Request $request, string $name)
+  {
+  }
 }
