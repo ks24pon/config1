@@ -27,6 +27,11 @@ Route::prefix('articles')->name('articles.')->group(function () {
 // ユーザーページ
 Route::prefix('users')->name('users.')->group(function () {
   Route::get('/{name}', 'UserController@show')->name('show');
+  // フォロー機能のルーティング
+  Route::middleware('auth')->group(function () {
+    Route::put('/{name}/follow', 'UserController@follow')->name('follow');
+    Route::delete('/{name}/follow', 'UserController@unfollow')->name('unfollow');
+  });
 });
 // タグ別記事一覧画面のルーティング
 Route::get('/tags/{name}', 'TagController@show')->name('tags.show');
