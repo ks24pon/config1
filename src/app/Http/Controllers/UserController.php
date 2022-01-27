@@ -33,6 +33,32 @@ class UserController extends Controller
       'articles' => $articles,
     ]);
   }
+  // フォロー一覧表示
+  public function followings(string $name)
+  {
+    // $userに最大で１件を取得させている
+    $user = User::where('name', $name)->first();
+    // User.phpのfollowingsを使用してUser.phpをコレクションで取得
+    $followings = $user->followings->sortByDesc('created_at');
+    // users/followingsのbladeを表示
+    return view('users.followings', [
+      'user' => $user,
+      'followings' => $followings,
+    ]);
+  }
+  // フォロワー一覧表示
+  public function followers(string $name)
+  {
+    // $userに最大で１件を取得
+    $user = User::where('name', $name)->first();
+    // User.phpのfollowersを使用してUser.phpをコレクションで取得
+    $followers = $user->followers->sortbyDesc('created_at');
+    // users/followersのbladeを表示
+    return view('users.followers', [
+      'user' => $user,
+      'followers' => $followers,
+    ]);
+  }
   // フォロー機能
   public function follow(Request $request, string $name)
   {
