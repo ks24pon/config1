@@ -20,6 +20,19 @@ class UserController extends Controller
       'articles' => $articles,
     ]);
   }
+  // いいねした記事一覧を表示した状態のユーザーページ
+  public function likes(string $name)
+  {
+    // $userに最大での１件を取得させている
+    $user = User::where('name', $name)->first();
+    // 変数$articlesにユーザーがいいねした記事モデルを代入
+    $articles = $user->likes->sortByDesc('created_at');
+    // 表示するbladeはresources/views/users/likes.blade.php
+    return view('users.likes', [
+      'user' => $user,
+      'articles' => $articles,
+    ]);
+  }
   // フォロー機能
   public function follow(Request $request, string $name)
   {
