@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -37,6 +38,12 @@ class User extends Authenticatable
   protected $casts = [
     'email_verified_at' => 'datetime',
   ];
+
+  // ユーザーとそのユーザーの投稿した記事は１対多の関係
+  public function articles(): HasMany
+  {
+    return $this->hasMany('App\Article');
+  }
 
   public function followers(): BelongsToMany
   {
