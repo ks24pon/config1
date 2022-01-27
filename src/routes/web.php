@@ -28,7 +28,7 @@ Route::prefix('articles')->name('articles.')->group(function () {
 Route::prefix('users')->name('users.')->group(function () {
   Route::get('/{name}', 'UserController@show')->name('show');
   // いいねタブが押された場合のユーザーページ表示のルーティング
-  Route::get('/{name},likes', 'UserController@likes')->name('likes');
+  Route::get('/{name}/likes', 'UserController@likes')->name('likes');
   // フォロー機能のルーティング
   Route::middleware('auth')->group(function () {
     Route::put('/{name}/follow', 'UserController@follow')->name('follow');
