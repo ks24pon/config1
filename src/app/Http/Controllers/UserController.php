@@ -12,9 +12,12 @@ class UserController extends Controller
   {
     // whereメソッドで最大でも１件取得
     $user = User::where('name', $name)->first();
+    // User.phpで書いたarticlesを使いユーザーの投稿した記事モデルをコレクションで取得
+    $articles = $user->articles->sortByDesc('created_at');
     // viewメソッドを使ってusers/show.blade.phpを表示
     return view('users.show', [
       'user' => $user,
+      'articles' => $articles,
     ]);
   }
   // フォロー機能
