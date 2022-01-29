@@ -24,7 +24,7 @@ class UserController extends Controller
   public function likes(string $name)
   {
     // $userに最大での１件を取得させている
-    $user = User::where('name', $name)->first();
+    $user = User::where('name', $name)->first()->load(['likes.user', 'likes.likes', 'likes.tags']);
     // 変数$articlesにユーザーがいいねした記事モデルを代入
     $articles = $user->likes->sortByDesc('created_at');
     // 表示するbladeはresources/views/users/likes.blade.php
@@ -37,7 +37,7 @@ class UserController extends Controller
   public function followings(string $name)
   {
     // $userに最大で１件を取得させている
-    $user = User::where('name', $name)->first();
+    $user = User::where('name', $name)->first()->load('followings.followers');
     // User.phpのfollowingsを使用してUser.phpをコレクションで取得
     $followings = $user->followings->sortByDesc('created_at');
     // users/followingsのbladeを表示
@@ -50,9 +50,9 @@ class UserController extends Controller
   public function followers(string $name)
   {
     // $userに最大で１件を取得
-    $user = User::where('name', $name)->first();
+    $user = User::where('name', $name)->first()->load('followers.followers');
     // User.phpのfollowersを使用してUser.phpをコレクションで取得
-    $followers = $user->followers->sortbyDesc('created_at');
+    $followers = $user->followers->sortByDesc('created_at');
     // users/followersのbladeを表示
     return view('users.followers', [
       'user' => $user,
@@ -63,7 +63,7 @@ class UserController extends Controller
   public function follow(Request $request, string $name)
   {
     // whereメソッドでユーザーモデルをコレクションとして渡してfirstメソッドで最初の１けんのユーザーを取得
-    $user = User::where('name', $name)->first();
+    $user = User::where('name', $name)->first()->load(['articles.user', 'articles.likes', 'articles.tags']);
 
     // 自分自身をフォローできないようにする
     if ($user->id === $request->user()->id) {

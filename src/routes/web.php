@@ -10,9 +10,20 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', 'ArticleController@index')->name('articles.index');
 Auth::routes();
+// Googleログインのボタンを押した後のルーティング
+Route::prefix('login')->name('login.')->group(function () {
+  Route::get('/{provider}', 'Auth\LoginController@redirectToProvider')->name('{provider}');
+  // Googleアカウントが選択されるとパスワード不要でログインできるルーティング
+  Route::get('/{provider}/callback', 'Auth\LoginController@handleProviderCallback')->name('{provider}.callback');
+});
+// ユーザー名登録画面表示処理のルーティング
+Route::prefix('register')->name('register.')->group(function () {
+  Route::get('/{provider}', 'Auth\RegisterController@showProviderUserRegistrationForm')->name('{provider}');
+  // Googleの垢でユーザー登録する
+  Route::post('/{provider}', 'Auth\RegisterController@registerProviderUser')->name('{provider}');
+});
+Route::get('/', 'ArticleController@index')->name('articles.index');
 // 記事関連のルーティング
 Route::resource('/articles', 'ArticleController')->except(['index', 'show'])->middleware('auth');
 //記事詳細のルーティング
@@ -29,7 +40,7 @@ Route::prefix('users')->name('users.')->group(function () {
   Route::get('/{name}', 'UserController@show')->name('show');
   // いいねタブが押された場合のユーザーページ表示のルーティング
   Route::get('/{name}/likes', 'UserController@likes')->name('likes');
-  // フォロー・フォロワーの一覧のルーティング（未ログインユーザーでも参照可能にatuhからはずす
+  // フォロー・フォロワーの一覧のルーティング（未ログインユーザーでも参照可能にauthからはずす
   Route::get('/{name}/followings', 'UserController@followings')->name('followings');
   Route::get('/{name}/followers', 'UserController@followers')->name('followers');
   // フォロー機能のルーティング
