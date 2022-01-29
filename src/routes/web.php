@@ -17,6 +17,10 @@ Route::prefix('login')->name('login.')->group(function () {
   // Googleアカウントが選択されるとパスワード不要でログインできるルーティング
   Route::get('/{provider}/callback', 'Auth\LoginController@handleProviderCallback')->name('{provider}.callback');
 });
+// ユーザー名登録画面表示処理のルーティング
+Route::prefix('register')->name('register.')->group(function () {
+  Route::get('/{provider}', 'Auth\RegisterController@showProviderUserRegistrationForm')->name('{provider}');
+});
 Route::get('/', 'ArticleController@index')->name('articles.index');
 // 記事関連のルーティング
 Route::resource('/articles', 'ArticleController')->except(['index', 'show'])->middleware('auth');
