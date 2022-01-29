@@ -50,7 +50,7 @@ class UserController extends Controller
   public function followers(string $name)
   {
     // $userに最大で１件を取得
-    $user = User::where('name', $name)->first();
+    $user = User::where('name', $name)->first()->load('followers.followers');
     // User.phpのfollowersを使用してUser.phpをコレクションで取得
     $followers = $user->followers->sortByDesc('created_at');
     // users/followersのbladeを表示
