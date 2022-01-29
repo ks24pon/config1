@@ -10,9 +10,12 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', 'ArticleController@index')->name('articles.index');
 Auth::routes();
+// Googleログインのボタンを押した後のルーティング
+Route::prefix('login')->name('login.')->group(function () {
+  Route::get('/{provider}', 'Auth\LoginController@redirectToProvider')->name('{provider}');
+});
+Route::get('/', 'ArticleController@index')->name('articles.index');
 // 記事関連のルーティング
 Route::resource('/articles', 'ArticleController')->except(['index', 'show'])->middleware('auth');
 //記事詳細のルーティング
