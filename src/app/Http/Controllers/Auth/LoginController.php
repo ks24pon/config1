@@ -41,7 +41,7 @@ class LoginController extends Controller
   // Googleログイン機能
   public function redirectToProvider(string $provider)
   {
-    // dirverメソッドで外部のサービス名を渡す
-    return Socialite::drive($provider)->redirect();
+    // driverメソッドで外部のサービス名を渡す
+    return Socialite::driver($provider)->redirect();
   }
 }
