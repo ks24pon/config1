@@ -60,5 +60,12 @@ class LoginController extends Controller
       // ログイン後に記事一覧画面に遷移
       return $this->sendLoginResponse($request);
     }
+
+    // このサービスに登録していない場合は登録画面を表示
+    return redirect()->route('register.{provider}', [
+      'provider' => $provider,
+      'email' => $providerUser->getEmail(),
+      'token' => $providerUser->token,
+    ]);
   }
 }
