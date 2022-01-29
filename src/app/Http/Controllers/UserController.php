@@ -63,7 +63,7 @@ class UserController extends Controller
   public function follow(Request $request, string $name)
   {
     // whereメソッドでユーザーモデルをコレクションとして渡してfirstメソッドで最初の１けんのユーザーを取得
-    $user = User::where('name', $name)->first();
+    $user = User::where('name', $name)->first()->load(['articles.user', 'articles.likes', 'articles.tags']);
 
     // 自分自身をフォローできないようにする
     if ($user->id === $request->user()->id) {
