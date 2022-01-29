@@ -58,7 +58,7 @@ class LoginController extends Controller
       // ユーザーをログイン状態
       $this->guard()->login($user, true);
       // ログイン後に記事一覧画面に遷移
-      return $this->sendLoginResponce($request);
+      return $this->sendLoginResponse($request);
     }
   }
 }
