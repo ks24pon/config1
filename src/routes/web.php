@@ -29,7 +29,7 @@ Route::prefix('users')->name('users.')->group(function () {
   Route::get('/{name}', 'UserController@show')->name('show');
   // いいねタブが押された場合のユーザーページ表示のルーティング
   Route::get('/{name}/likes', 'UserController@likes')->name('likes');
-  // フォロー・フォロワーの一覧のルーティング（未ログインユーザーでも参照可能にatuhからはずす
+  // フォロー・フォロワーの一覧のルーティング（未ログインユーザーでも参照可能にauthからはずす
   Route::get('/{name}/followings', 'UserController@followings')->name('followings');
   Route::get('/{name}/followers', 'UserController@followers')->name('followers');
   // フォロー機能のルーティング
