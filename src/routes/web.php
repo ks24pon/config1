@@ -14,6 +14,8 @@ Auth::routes();
 // Googleログインのボタンを押した後のルーティング
 Route::prefix('login')->name('login.')->group(function () {
   Route::get('/{provider}', 'Auth\LoginController@redirectToProvider')->name('{provider}');
+  // Googleアカウントが選択されるとパスワード不要でログインできるルーティング
+  Route::get('/{provider}/callback', 'Auth\LoginController@handleProviderCallback')->name('{provider}.callback');
 });
 Route::get('/', 'ArticleController@index')->name('articles.index');
 // 記事関連のルーティング
