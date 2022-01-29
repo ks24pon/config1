@@ -20,6 +20,8 @@ Route::prefix('login')->name('login.')->group(function () {
 // ユーザー名登録画面表示処理のルーティング
 Route::prefix('register')->name('register.')->group(function () {
   Route::get('/{provider}', 'Auth\RegisterController@showProviderUserRegistrationForm')->name('{provider}');
+  // Googleの垢でユーザー登録する
+  Route::post('/{provider}', 'Auth\RegisterController@registerProviderUser')->name('{provider}');
 });
 Route::get('/', 'ArticleController@index')->name('articles.index');
 // 記事関連のルーティング
