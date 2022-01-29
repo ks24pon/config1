@@ -72,4 +72,17 @@ class RegisterController extends Controller
       'password' => Hash::make($data['password']),
     ]);
   }
+  // ユーザー名登録画面の表示処理
+  public function showProviderUserRegistrationForm(Request $request, string $provider)
+  {
+    // トークンを使ってGoogleからユーザー情報を取得
+    $token = $request->token;
+    $providerUser = Socialite::driver($provider)->userFromToken($token);
+
+    return view('auth.social_register', [
+      'provider' => $provider,
+      'email' => $providerUser->getEmail(),
+      'token' => $token,
+    ]);
+  }
 }
