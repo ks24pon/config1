@@ -24,7 +24,7 @@ class UserController extends Controller
   public function likes(string $name)
   {
     // $userに最大での１件を取得させている
-    $user = User::where('name', $name)->first();
+    $user = User::where('name', $name)->first()->load(['likes.user', 'likes.likes', 'likes.tags']);
     // 変数$articlesにユーザーがいいねした記事モデルを代入
     $articles = $user->likes->sortByDesc('created_at');
     // 表示するbladeはresources/views/users/likes.blade.php
