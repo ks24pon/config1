@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite;
 
 class LoginController extends Controller
@@ -43,5 +45,20 @@ class LoginController extends Controller
   {
     // driverメソッドで外部のサービス名を渡す
     return Socialite::driver($provider)->redirect();
+  }
+  // Googleアカウントでログイン処理
+  public function handleProviderCallback(Request $request, string $provider)
+  {
+    // Googleからユーザー情報を取得
+    $providerUser = Socialite::driver($provider)->stateless()->user();
+    // Googleのメールアドレスを元にユーザーモデルを取得
+    $user = User::where('email', $providerUser->getEmail())->first();
+    // ログイン処理
+    if ($user) {
+      // ユーザーをログイン状態
+      $this->guard()->login($user, true);
+      // ログイン後に記事一覧画面に遷移
+      return $this->sendLoginResponce($request);
+    }
   }
 }
