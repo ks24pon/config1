@@ -68,4 +68,13 @@ class LoginController extends Controller
       'token' => $providerUser->token,
     ]);
   }
+
+  // ゲストユーザー用のIDを定数として定義
+  private const GUEST_USER_ID = 1;
+  // ゲストログイン機能
+  public function guestLogin()
+  {
+    // id=1がゲストユーザー情報がdbに存在すれば、ゲストログインをする
+
+  }
 }

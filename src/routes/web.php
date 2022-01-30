@@ -17,6 +17,8 @@ Route::prefix('login')->name('login.')->group(function () {
   // Googleアカウントが選択されるとパスワード不要でログインできるルーティング
   Route::get('/{provider}/callback', 'Auth\LoginController@handleProviderCallback')->name('{provider}.callback');
 });
+// ゲストログイン
+Route::get('guest', 'Auth\LoginController@guestLogin')->name('login.guest');
 // ユーザー名登録画面表示処理のルーティング
 Route::prefix('register')->name('register.')->group(function () {
   Route::get('/{provider}', 'Auth\RegisterController@showProviderUserRegistrationForm')->name('{provider}');
