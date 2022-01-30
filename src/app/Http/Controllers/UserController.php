@@ -69,12 +69,12 @@ class UserController extends Controller
     if ($user->id === $request->user()->id) {
       // abort関数で第一引数にステータスコードを渡す
       return abort('404', 'Cannot follow yourself');
-      // 一人のユーザーが複数重ねてフォローできないようにdetachから実装
-      $request->user()->followings()->detach($user);
-      $request->user()->followings()->attach($user);
-      // レスポンスをユーザー名で返す
-      return ['name' => $name];
     }
+    // 一人のユーザーが複数重ねてフォローできないようにdetachから実装
+    $request->user()->followings()->detach($user);
+    $request->user()->followings()->attach($user);
+    // レスポンスをユーザー名で返す
+    return ['name' => $name];
   }
 
   // フォロー解除機能
