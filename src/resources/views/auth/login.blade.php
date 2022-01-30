@@ -13,6 +13,7 @@
           <a href="{{ route('login.{provider}', ['provider' => 'google']) }}" class="btn btn-block btn-danger">
             <i class="fab fa-google mr-1"></i>Googleでログイン
           </a>
+
           @include('error_card_list')
 
           <div class="card-text">
@@ -32,6 +33,8 @@
               <input type="hidden" name="remember" id="remember" value="on">
 
               <button class="btn btn-block blue-gradient mt-2 mb-2" type="submit">ログイン</button>
+
+              <a href="{{ route('login.guest') }}" class="btn btn-block btn-info">ゲストでログイン</a>
 
             </form>
 
