@@ -17,12 +17,12 @@ class CreateLikesTable extends Migration
       // いいねを識別するID
       $table->bigIncrements('id');
       $table->bigInteger('user_id')->unsigned();
-      // 外部キー制約
+      // 外部キー制約(likesテーブルのuser_idカラムはusersテーブルのidカラムを参照する。)
       $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
       $table->bigInteger('article_id')->unsigned();
-      // 外部キー制約
+      // 外部キー制約(likesテーブルのarticle_idはarticlesテーブルのidを参照する。)
       $table->foreign('article_id')->references('id')->on('articles')->onDelete('cascade');
-
+      // 作成・更新日時
       $table->timestamps();
     });
   }
