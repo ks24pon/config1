@@ -14,8 +14,11 @@ class CreateTagsTable extends Migration
   public function up()
   {
     Schema::create('tags', function (Blueprint $table) {
+      // タグを識別するID
       $table->bigIncrements('id');
+      // タグ名
       $table->string('name')->unique();
+      // 作成・更新日時
       $table->timestamps();
     });
   }
