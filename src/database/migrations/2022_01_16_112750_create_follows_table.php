@@ -15,12 +15,13 @@ class CreateFollowsTable extends Migration
   {
     Schema::create('follows', function (Blueprint $table) {
       $table->bigIncrements('id');
-      // フォロワー
+      // フォロワーのユーザーid
       $table->bigInteger('follower_id')->unsigned();
-      // 外部キー制約
+      // 外部キー制約(followsテーブルのfollower_idはusersテーブルのidを参照。onDeleteでusersテーブルのレコードが削除なると同時に削除)
       $table->foreign('follower_id')->references('id')->on('users')->onDelete('cascade');
+      // フォローもユーザーid
       $table->bigInteger('followee_id')->unsigned();
-      // 外部キー制約
+      // 外部キー制約(followsテーブルのfollowee_idはusersテーブルのidを参照。onDeleteでusersテーブルのレコードが削除なると同時に削除)
       $table->foreign('followee_id')->references('id')->on('users')->onDelete('cascade');
       $table->timestamps();
     });
