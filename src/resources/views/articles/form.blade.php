@@ -42,20 +42,16 @@
 </div>
 
 <div class="card-body form-group text-left col-lg-8 col-md-9 col-sm-10 col-xs-12 mx-auto mt-5">
-  <label class="bg orange lighten-1 text-white px-3 py-2 rounded-pill mb-3">面接で聞かれた質問</label>
-  <textarea name="question_content" class="form-control" required rows="8" placeholder="(例)・なぜエンジニアになろうと思ったのか">{{ $article->question_content ?? old('question_content') }}</textarea>
+  <label class="bg orange lighten-1 text-white px-3 py-2 rounded-pill mb-3">試験の内容</label>
+  <textarea name="contents_test" class="form-control" required rows="8" placeholder="(例)・筆記試験は数的処理や時事問題が多く出題される">{{ $article->contents_test ?? old('contents_test') }}</textarea>
 </div>
 
 <div class="card-body form-group text-left col-lg-8 col-md-9 col-sm-10 col-xs-12 mx-auto mt-4">
-  <label class="bg orange lighten-1 text-white px-3 py-2 rounded-pill mb-3">その他情報</label>
-  <textarea name="other_information" class="form-control" required rows="8" placeholder="(例)・面接担当は人事1名、エンジニア1名">{{ $article->other_information ?? old('other_information') }}</textarea>
+  <label class="bg orange lighten-1 text-white px-3 py-2 rounded-pill mb-3">その他の情報</label>
+  <textarea name="other_information" class="form-control" required rows="8" placeholder="(例)・試験当日はスリッパなど持って行く方が良い">{{ $article->other_information ?? old('other_information') }}</textarea>
 </div>
 
 <div class="card-body form-group text-left col-lg-8 col-md-9 col-sm-10 col-xs-12 mx-auto mt-4">
-  <label class="bg orange lighten-1 text-white px-3 py-2 rounded-pill mb-3">所感・アドバイス等</label>
-  <textarea name="impression" class="form-control" required rows="8" placeholder="(例)・転職理由を答える際はネガティブな内容にならないように気をつける">{{ $article->question_content ?? old('question_content') }}</textarea>
+  <label class="bg orange lighten-1 text-white px-3 py-2 rounded-pill mb-3">アドバイスなど</label>
+  <textarea name="advice_etc" class="form-control" required rows="8" placeholder="(例)・筆記試験は私服可が多いので受けやすい服装で行くと良い">{{ $article->advice_etc ?? old('advice_etc') }}</textarea>
 </div>
-<!-- <div class="form-group">
-  <label></label> -->
-<!-- <textarea name="body" required class="form-control" rows="16" placeholder="本文">{{ $article->body ?? old('body') }}</textarea> -->
-<!-- </div> -->
