@@ -23,9 +23,9 @@ class CreateArticlesTable extends Migration
       //外部キー制約（articlesテーブルのuser_idはusersテーブルのidを参照)
       $table->foreign('user_id')->references('id')->on('users');
       // 採用形態ボタン
-      $table->bigInteger('recruitment_id');
+      $table->bigInteger('recruitment_id')->unsigned();
       // 試験項目ボタン
-      $table->bigInteger('test_id');
+      $table->bigInteger('test_id')->unsigned();
       //試験内容
       $table->text('contents_test');
       // その他の情報
