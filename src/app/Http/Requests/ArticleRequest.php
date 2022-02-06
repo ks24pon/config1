@@ -26,6 +26,11 @@ class ArticleRequest extends FormRequest
     return [
       'title' => 'required|max:50',
       'tags' => 'json|regex:/^(?!.*\s).+$/u|regex:/^(?!.*\/).*$/u',
+      'recruitment_id' => 'required|max:1',
+      'test_id' => 'required|max:1',
+      'contents_test' => 'required|max:500',
+      'other_information' => 'required|max:500',
+      'advice_etc' => 'required|max:500',
     ];
   }
 
@@ -34,6 +39,11 @@ class ArticleRequest extends FormRequest
     return [
       'title' => 'タイトル',
       'tag' => 'タグ',
+      'recruitment_id' => '採用形態',
+      'test_id' => '試験内容',
+      'contents_test' => '試験の内容',
+      'othr_information' => 'その他の情報',
+      'advice_etc' => 'アドバイスなど',
     ];
   }
 
