@@ -11,7 +11,11 @@ class Article extends Model
   // 不正利用対策
   protected $fillable = [
     'title',
-    'body',
+    'recruitment_id',
+    'test_id',
+    'contents_test',
+    'othe_information',
+    'advice_etc',
   ];
 
   public function user(): BelongsTo
