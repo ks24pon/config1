@@ -30,7 +30,7 @@ Route::get('/', 'ArticleController@index')->name('articles.index');
 Route::resource('/articles', 'ArticleController')->except(['index', 'show'])->middleware('auth');
 //記事詳細のルーティング
 Route::resource('/articles', 'ArticleController')->only(['show']);
-// いいね機能のルーティング
+// いいね機能のルーティングaaa
 Route::prefix('articles')->name('articles.')->group(function () {
   // いいねしたルーティング
   Route::put('/{article}/like', 'ArticleController@like')->name('like')->middleware('auth');
