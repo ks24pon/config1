@@ -13,11 +13,11 @@
   <span class="col-3 text-center bg orange lighten-1 text-white px-3 py-2 rounded-pill">採用形態</span>
   <div class="col-9 text-left py-2 ">
     <div class="form-check form-check-inline">
-      <input type="radio" name='recruitment_id' id="recruitment1" class='form-check-input' value=1>
+      <input type="radio" name='recruitment_id' id="recruitment1" class='form-check-input' value=1 {{ old("recruitment_id") == 1 ? 'checked' : '' }}>
       <label class="form-check-label" for="recruitment1">国家公務員</label>
     </div>
     <div class="form-check form-check-inline">
-      <input type="radio" name='recruitment_id' id="recruitment2" class='form-check-input' value=2>
+      <input type="radio" name='recruitment_id' id="recruitment2" class='form-check-input' value=2 {{ old("recruitment_id") == 1 ? 'checked' : '' }}>
       <label class="form-check-label" for="recruitment2">地方公務員</label>
     </div>
   </div>
@@ -27,15 +27,15 @@
   <span class="col-3 text-center bg orange lighten-1 text-white px-3 py-2 rounded-pill">試験内容</span>
   <div class="col-9 text-left">
     <div class="form-check form-check-inline">
-      <input type="radio" name='test_id' id="test1" class='form-check-input' value=1>
+      <input type="radio" name='test_id' id="test1" class='form-check-input' value=1 {{ old('test_id') == 1 ? 'checked' : '' }}>
       <label class="form-check-label" for="test1">筆記試験</label>
     </div>
     <div class="form-check form-check-inline">
-      <input type="radio" name='test_id' id="test2" class='form-check-input' value=2>
+      <input type="radio" name='test_id' id="test2" class='form-check-input' value=2 {{ old('test_id') == 1 ? 'checked' : '' }}>
       <label class="form-check-label" for="test2">面接試験</label>
     </div>
     <div class="form-check form-check-inline">
-      <input type="radio" name='test_id' id="test3" class='form-check-input' value=3>
+      <input type="radio" name='test_id' id="test3" class='form-check-input' value=3 {{ old('test_id') == 1 ? 'checked' : '' }}>
       <label class="form-check-label" for="test3">論文作成</label>
     </div>
   </div>
