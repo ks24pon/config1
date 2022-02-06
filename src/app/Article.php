@@ -14,7 +14,7 @@ class Article extends Model
     'recruitment_id',
     'test_id',
     'contents_test',
-    'othe_information',
+    'other_information',
     'advice_etc',
   ];
 
