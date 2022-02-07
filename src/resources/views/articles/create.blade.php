@@ -11,7 +11,7 @@
     <div class="col-lg-10 col-md-12 mx-auto my-5">
       <div class="card mt-5 mb-5">
         <div class="card-body text-center">
-          <h2 class='h4 card-title text-center mt-5 mb-1'><span class="bg cyan darken-3 text-white py-3 px-4 rounded-pill">投稿</span></h2>
+          <h2 class='h4 card-title text-center mt-5 mb-1'><span class="bg cyan grey white text-block py-3 px-4">投稿</span></h2>
 
           @include('error_card_list')
 
