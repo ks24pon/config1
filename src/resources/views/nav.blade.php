@@ -1,6 +1,12 @@
-<nav class="navbar navbar-expand navbar-dark blue-gradient">
+<nav class="navbar navbar-expand-sm navbar-dark bg-success">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav4" aria-controls="navbarNav4" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-  <a class="navbar-brand" href="/"><i class="far fa-sticky-note mr-1"></i>コムジュ</a>
+  <a class="navbar-brand" href="/">
+      <i class="far fa-star"></i>
+        <span class="logo_style">コムジョ</span>
+  </a>
 
   <ul class="navbar-nav ml-auto">
 
