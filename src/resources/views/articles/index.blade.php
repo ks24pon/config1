@@ -14,6 +14,11 @@
                 <span class="logo_style">コムジョ</span>
             </div>
         </div>
+
+        <div class="site-consept text-center my-2">
+        <!-- <div class="col-lg-6 my-2"> -->
+            <img src="{{ asset('img/coffee-2511065.jpg') }}" width="100%">
+        </div>
     </div>
 </div>
 
