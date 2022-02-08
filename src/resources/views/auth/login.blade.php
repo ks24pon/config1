@@ -11,8 +11,13 @@
           <form method="POST" class="text-center border border-light p-5" action="{{ route('login') }}">
             @csrf
             <p class="h4 mb-4">ログイン</p>
-          <a href="{{ route('login.{provider}', ['provider' => 'google']) }}" class="btn btn-block btn-green">
+
+          <a href="{{ route('login.{provider}', ['provider' => 'google']) }}" class="btn btn-block btn-green mb-2">
             <i class="fab fa-google mr-1"></i>Googleでログイン
+          </a>
+
+          <a href="{{ route('login.{provider}', ['provider' => 'twitter']) }}" class="btn btn-block btn-info">
+            <i class="fab fa-twitter mr-1"></i>Twitterでログイン
           </a>
 
           @include('error_card_list')
@@ -31,7 +36,7 @@
 
               <button class="btn btn-block blue-gradient mt-2 mb-2" type="submit">ログイン</button>
 
-              <a href="{{ route('login.guest') }}" class="btn btn-block btn-info">ゲストでログイン</a>
+              <a href="{{ route('login.guest') }}" class="btn btn-block btn-red">ゲストでログイン</a>
             <div class="mt-0">
               <a href="{{ route('register') }}" class="text-muted">ユーザー登録はこちら</a>
             </div>
