@@ -23,12 +23,12 @@
           @include('error_card_list')
 
             <div class="md-form">
-                <label for="email">メールアドレス</label>
+                <label for="email">メールアドレス<snall class="text-warning ml-1">[必須]</small></label>
                 <input class="form-control mb-4" type="text" id="email" name="email" required value="{{ old('email') }}">
               </div>
 
               <div class="md-form">
-                <label for="password">パスワード</label>
+                <label for="password">パスワード<small class="text-warning ml-1">[必須]</small></label>
                 <input class="form-control mb-4" type="password" id="password" name="password" required>
               </div>
               <!-- 次回から自動でログインする -->
