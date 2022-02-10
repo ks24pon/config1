@@ -1,9 +1,7 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-success">
-
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav4" aria-controls="navbarNav4" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav4">
+<nav class="navbar navbar-expand-sm navbar-dark bg-success">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav4" aria-controls="navbarNav4" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
   <a class="navbar-brand" href="/">
       <i class="far fa-star"></i>
