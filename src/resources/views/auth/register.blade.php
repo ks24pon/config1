@@ -5,14 +5,21 @@
 @section('content')
 @include('nav')
 <div class="container">
-  <div class="row">
-    <div class="mx-auto col col-12 col-sm-11 col-md-9 col-lg-7 col-xl-6">
-      <h1 class="text-center"><a class="text-dark" href="/">memo</a></h1>
-      <div class="card mt-3">
-        <div class="card-body text-center">
-          <h2 class="h3 card-title text-center mt-2">ユーザー登録</h2>
-          <a href="{{ route('login.{provider}',['provider' => 'google']) }}" class="btn btn-block btn-danger">
+  <div class="container my-5">
+    <div class="row">
+      <div class="mx-auto col col-12 col-sm-11 col-md-9 col-lg-7 col-xl-6">
+            <form method="POST" class="text-center border border-light p-5" action="{{ route('register') }}">
+                @csrf
+
+                <p class="h4 mb-4">ユーザー登録</p>
+
+          <!-- //Googleで登録 -->
+          <a href="{{ route('login.{provider}',['provider' => 'google']) }}" class="btn btn-block btn-green mb-2">
             <i class="fab fa-google mr-1"></i>Googleで登録
+          </a>
+          <!-- Twitterで登録 -->
+          <a href="{{ route('login.{provider}',['provider' => 'twitter']) }}" class="btn btn-block btn-info">
+            <i class="fab fa-twitter mr-1"></i>Twitterで登録
           </a>
           @include('error_card_list')
 
@@ -40,11 +47,9 @@
             </form>
 
             <div class="mt-0">
-              <a href="{{ route('login') }}" class="card-text">ログインはこちら</a>
+              <a href="{{ route('login') }}" class="text-muted">ログインはこちら</a>
             </div>
-
           </div>
-        </div>
       </div>
     </div>
   </div>
