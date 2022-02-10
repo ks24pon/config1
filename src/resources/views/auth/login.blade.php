@@ -36,7 +36,7 @@
 
               <button class="btn btn-block blue-gradient mt-2 mb-2" type="submit">ログイン</button>
 
-              <a href="{{ route('login.guest') }}" class="btn btn-block btn-red">ゲストでログイン</a>
+              <a href="{{ route('login.guest') }}" class="btn btn-block btn-warning">ゲストでログイン</a>
             <div class="mt-0">
               <a href="{{ route('register') }}" class="text-muted">ユーザー登録はこちら</a>
             </div>
