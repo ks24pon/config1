@@ -27,20 +27,20 @@
             <form method="POST" action="{{ route('register') }}">
               @csrf
               <div class="md-form">
-                <label for="name">ユーザー名</label>
+                <label for="name">ユーザー名<small class="text-warning ml-1">[必須]</small></label>
                 <input class="form-control" type="text" id="name" name="name" required value="{{ old('name') }}">
                 <small>英数字3〜16文字(登録後の変更はできません)</small>
               </div>
               <div class="md-form">
-                <label for="email">メールアドレス</label>
+                <label for="email">メールアドレス<small class="text-warning ml-1">[必須]</small></label>
                 <input class="form-control" type="text" id="email" name="email" required value="{{ old('email') }}">
               </div>
               <div class="md-form">
-                <label for="password">パスワード</label>
+                <label for="password">パスワード<small class="text-warning ml-1">[必須]</small></label>
                 <input class="form-control" type="password" id="password" name="password" required>
               </div>
               <div class="md-form">
-                <label for="password_confirmation">パスワード(確認)</label>
+                <label for="password_confirmation">パスワード(確認)<small class="text-warning ml-1">[必須]</label>
                 <input class="form-control" type="password" id="password_confirmation" name="password_confirmation" required>
               </div>
               <button class="btn btn-block blue-gradient mt-2 mb-2" type="submit">ユーザー登録</button>
