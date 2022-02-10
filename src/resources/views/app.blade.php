@@ -20,6 +20,7 @@
   <div id="app">
     @yield('content')
   </div>
+  @include('footer')
   <!-- Laravelのmix関数を使用 -->
   <script src="{{ mix('js/app.js') }}"></script>
 
