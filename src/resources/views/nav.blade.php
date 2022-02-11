@@ -14,19 +14,28 @@
       <!-- ログイン前に表示 -->
       @guest
       <li class="nav-item">
-        <a class="nav-link" href="{{ route('register') }}">ユーザー登録</a>
+        <a class="nav-link" href="{{ route('register') }}">
+          <i class="far fa-user"></i>
+          <span class="logo_style">ユーザー登録</span>
+        </a>
       </li>
       @endguest
 
       @guest
       <li class="nav-item">
-        <a class="nav-link" href="{{ route('login') }}">ログイン</a>
+        <a class="nav-link" href="{{ route('login') }}">
+          <i class="fas fa-sign-in-alt"></i>
+          <span class="logo_style">ログイン</span>
+        </a>
       </li>
       @endguest
 
       @guest
       <li class="nav-item">
-        <a class="nav-link" href="{{ route('login.guest') }}">ゲストログイン</a>
+        <a class="nav-link" href="{{ route('login.guest') }}">
+         <i class="fas fa-user-friends"></i>
+         <span class="logo_style">ゲストログイン</span>
+        </a>
       </li>
       @endguest
       <!-- ログイン後の表示 -->
