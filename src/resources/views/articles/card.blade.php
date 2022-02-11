@@ -4,6 +4,7 @@
       <i class="fas fa-user-circle fa-3x mr-1"></i>
     </a>
     <div>
+      <!-- 記事 ユーザー -->
       <div class="font-weight-bold">
         <a href="{{ route('users.show', ['name' => $article->user->name]) }}" class="text-dark">
           {{ $article->user->name }}
@@ -60,6 +61,7 @@
 
   </div>
   <div class="card-body pt-0">
+    <!-- 記事タイトル -->
     <h3 class="h4 card-title">
       <a class="text-dark" href="{{ route('articles.show', ['article' => $article]) }}">
         {{ $article->title }}
