@@ -43,12 +43,23 @@
       <li class="nav-item">
         <a class="nav-link" href="{{ route('articles.create') }}"><i class="fas fa-pen mr-1"></i>投稿する</a>
       </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="{{ route('users.show', ['name' => Auth::user()->name]) }}"><i class="fas fa-user-circle"></i>マイページ</a>
+      </li>
+
+    <button form="logout-button" class="dropdown-item" type="submit">
+      ログアウト
+    </button>
+
+    <form id="logout-button" method="POST" action="{{ route('logout') }}">
+      @csrf
+    </form>
+
       @endauth
 
-      @auth
-      <!-- Dropdown -->
-
-      <!-- <li class="nav-item dropdown">
+      <!-- @auth
+      <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fas fa-user-circle"></i>
         </a>
@@ -65,10 +76,8 @@
     </li>
     <form id="logout-button" method="POST" action="{{ route('logout') }}">
       @csrf
-    </form> -->
-    <!-- Dropdown -->
-    @endauth
-
-  </ul>
+    </form>
+      @endauth -->
+    </ul>
   </div>
 </nav>
